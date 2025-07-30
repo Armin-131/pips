@@ -71,6 +71,7 @@ void	pipex(t_data *data, char **envp, int *fd)
 	pid_t	child1;
 	pid_t	child2;
 	int		pip[2];
+	int status;
 
 	pipe(pip);
 	child1 = fork();
@@ -95,7 +96,6 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
 	int		fd[2];
-	int status;
 
 	if (argc != 5)
 	{
