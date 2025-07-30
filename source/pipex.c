@@ -87,7 +87,7 @@ void	pipex(t_data *data, char **envp, int *fd)
 	}
 	close(pip[0]);
 	close(pip[1]);
-	wait(NULL);
+	waitpid(child1, );
 	wait(NULL);
 }
 
@@ -95,6 +95,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_data	data;
 	int		fd[2];
+	int status;
 
 	if (argc != 5)
 	{
@@ -114,12 +115,12 @@ int	main(int argc, char **argv, char **envp)
 		perror(data.outfile);
 	data.cmnd1 = ft_split(argv[2], ' ');
 	data.cmnd2 = ft_split(argv[3], ' ');
-	pipex(&data, envp, fd);
+	status = pipex(&data, envp, fd);
 	if (fd[0] >= 0)
 		close(fd[0]);
 	if (fd[1] >= 0)
 		close(fd[1]);
 	ft_freedom(data.cmnd1);
 	ft_freedom(data.cmnd2);
-	return (0);
+	return (status);
 }
