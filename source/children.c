@@ -31,9 +31,9 @@ void	kid1(t_data *data, char **envp, int *fd, int *pip)
 	}
 	location = findpath(data->cmnd1, envp);
 	if (!location)
-		nocommand(data->cmnd1, 1);
+		nocommand(data->cmnd1, 127);
 	if (!execve(location, data->cmnd1, envp))
-		ft_error(data->cmnd1, location, 127);
+		ft_error(data->cmnd1, location, 1);
 	free(location);
 }
 
